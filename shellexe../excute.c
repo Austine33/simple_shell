@@ -1,3 +1,4 @@
+
 #include "main.h"
 /**
  * execute_args - executes the command
@@ -12,7 +13,14 @@ int execute_args(char **tokens)
 {
 	pid_t child;
 	int stat;
+	int i = 0;
 
+	while (tokens[i] != NULL)
+	{
+		printf(".%s.\n", tokens[i]);
+		i += 1;
+		sleep(3);
+	}
 	child = fork();
 	if (child == -1)
 	{

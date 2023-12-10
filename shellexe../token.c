@@ -16,11 +16,11 @@ char **tokenise(char *line)
 	char *tok;
 
 	copy_of_line = strdup(line);
-	tok = strtok(line, " ");
+	tok = strtok(line, " \n");
 	while (tok != NULL)
 	{
 		i += 1;
-		tok = strtok(NULL, " ");
+		tok = strtok(NULL, " \n");
 	}
 	token = malloc((i + 1) * sizeof(char *));
 	if (token == NULL)
@@ -28,13 +28,23 @@ char **tokenise(char *line)
 		printf("error in allocation");
 		exit(1);
 	}
-	tok = strtok(copy_of_line, " ");
+	tok = strtok(copy_of_line, " \n");
 	while (tok != NULL)
 	{
 		token[j] = tok;
 		j += 1;
-		tok = strtok(NULL, " ");
+		tok = strtok(NULL, " \n");
 	}	
 	token[i] = NULL;
+	j = 0;
+	printf("[");
+	while (token[j] != NULL)
+	{
+		printf(" %s,", token[j]);
+		j += 1;
+		sleep(3);
+	}
+	printf(" NULL");
+	printf("]\n");
 	return (token);
 }
