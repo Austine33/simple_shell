@@ -20,9 +20,11 @@ char **path(char **tokenised)
 	int dir_len = 0;
 	int cmd_len = 0;
 	char *new_cmd;
+	char arr[20];
 	int op = 0;
+	int x = 0;
 
-	if (tokenised[0][0] == '/')
+	if (tokenised[0][0] == '/')	
 	{
 		return (tokenised);
 	}
@@ -37,7 +39,7 @@ char **path(char **tokenised)
 		new_token = malloc(count * sizeof(char *));
 		if (new_token == NULL)
 		{
-			printf("error in execution");
+			printf("error in execution\n");
 			exit(EXIT_FAILURE);
 		}
 		path = strtok(paths, ":");
@@ -55,15 +57,17 @@ char **path(char **tokenised)
 			strcat(new_cmd, "/");
 			strcat(new_cmd, tokenised[0]);
 			strcat(new_cmd, "\0");
+			strcpy(arr, new_cmd);
 			if (stat(new_cmd, &st) == 0)
 			{
-				new_token[j] = tokenised[j];
+				new_token[j] = arr;
 				j += 1;
 				op = 1;
 				break;
 			}
 			else
 			{
+			
 				free(new_cmd);
 				path = strtok(NULL, ":");
 			}
@@ -73,9 +77,20 @@ char **path(char **tokenised)
 			while (tokenised[j] != NULL)
 			{
 				new_token[j] = tokenised[j];
+				printf("\n%s", new_token[j]);
 				j += 1;
 			}
+			printf("[");
+			while (new_token[x] != NULL)
+			{
+				printf(" %s, ", new_token[x]);
+				x += 1;
+			}
 			new_token[j] = NULL;
+			if (new_token[j] == NULL)
+			{
+				printf("NULL]\n");
+			}
 			free(new_cmd);
 			return (new_token);
 		}

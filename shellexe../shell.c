@@ -16,6 +16,7 @@ int main(void)
 		input_string = getcmd();
 		tokenised = tokenise(input_string);
 		command = path(tokenised);
+		printf(".................1%s1.........1%s1.....\n", command[0], command[1]);
 		if (command[0] != NULL)
 		{
 			execute_args(command);

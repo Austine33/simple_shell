@@ -36,15 +36,5 @@ char **tokenise(char *line)
 		tok = strtok(NULL, " \n");
 	}	
 	token[i] = NULL;
-	j = 0;
-	printf("[");
-	while (token[j] != NULL)
-	{
-		printf(" %s,", token[j]);
-		j += 1;
-		sleep(3);
-	}
-	printf(" NULL");
-	printf("]\n");
 	return (token);
 }
