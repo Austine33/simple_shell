@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <string.h>
 #include <ctype.h>
+#include <sys/stat.h>
 char *getcmd(void);
 int execute_args(char **tokens);
 char **tokenise(char *line);

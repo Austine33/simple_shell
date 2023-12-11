@@ -22,9 +22,9 @@ char **path(char **tokenised)
 	char *new_cmd;
 	int op = 0;
 
-	if (tokenised[0][0] == '\')
+	if (tokenised[0][0] == '/')
 	{
-		return (tokenised)
+		return (tokenised);
 	}
 	else
 	{
