@@ -91,7 +91,7 @@ char **path(char **tokenised)
 			{
 				printf("NULL]\n");
 			}
-			free(new_cmd);
+			/*free(new_cmd);*/
 			return (new_token);
 		}
 		else
