@@ -21,6 +21,7 @@ char **path(char **tokenised)
     int cmd_len = 0;
     char *new_cmd;
     char arr[20];
+    char *cp_paths;
     /*char array[1][20];*/
     int op = 0;
     int x = 0;
@@ -31,9 +32,10 @@ char **path(char **tokenised)
     }
     else
     {
-        while (tokenised[i] != NULL)
-        {
-            i += 1;
+	    cp_paths = strdup(paths);
+	    while (tokenised[i] != NULL)
+	    {
+		    i += 1;
             count = count + 1;
         }
         count += 1;
@@ -43,7 +45,7 @@ char **path(char **tokenised)
             printf("error in execution\n");
             exit(EXIT_FAILURE);
         }
-        path = strtok(paths, ":");
+        path = strtok(cp_paths, ":");
         while (path != NULL)
         {
             dir_len = strlen(path);
@@ -52,6 +54,7 @@ char **path(char **tokenised)
             if (new_cmd == NULL)
             {
                 printf("error in execution");
+		free(cp_paths);
                 exit(EXIT_FAILURE);
             }
             strcpy(new_cmd, path);
@@ -65,11 +68,11 @@ char **path(char **tokenised)
                 /*array[0][j] = arr;*/
                 j += 1;
                 op = 1;
+		free(cp_paths);
                 break;
             }
             else
             {
-
                 free(new_cmd);
                 path = strtok(NULL, ":");
             }
@@ -99,6 +102,7 @@ char **path(char **tokenised)
             return (new_token);
             /*return(array);*/
         }
+	free(new_cmd);
         free(new_token);
         return (null_ptr);
     }
