@@ -7,6 +7,11 @@ int cmd_exists(char **arr)
 	char *path;
 	char *temp = strdup(*arr);
 
+	printf("%s\n", *arr);
+	if (stat(*arr, &st) == 0)
+	{
+		return (0);
+	}
 	copy = strdup(paths);
 	if (copy == NULL)
 	{
