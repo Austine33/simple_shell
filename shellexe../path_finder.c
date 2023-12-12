@@ -1,67 +1,37 @@
 #include "main.h"
-/**
- *
- *
- *
- *
- */
-
-char *find_path(char *cmd)
+int cmd_exists(char **arr)
 {
-	char *paths = getenv("PATH");
-	char *path;
-	int dir_len = 0;
-	int cmd_len = 0;
-	char *new_cmd = NULL;
-	/*char arr[100];*/
 	struct stat st;
+	char *paths = getenv("PATH");
+	char *copy;
+	char *path;
+	char *temp = strdup(*arr);
 
-	if (cmd[0] == '/')
+	copy = strdup(paths);
+	if (copy == NULL)
 	{
-		return (cmd);
+		printf("error in allocation");
+		exit(EXIT_FAILURE);
 	}
-	else
+	path = strtok(copy, ":");
+	while (path != NULL)
 	{
-		path = strtok(paths, ":");
-		while (path != NULL)
+		strcpy(*arr, path);
+		strcat(*arr, "/");
+		strcat(*arr, temp);
+		strcat(*arr, "\0");
+		if (stat(*arr, &st) == 0)
 		{
-			dir_len = strlen(path);
-			cmd_len = strlen(cmd);
-			if (new_cmd == NULL)
-			{
-				new_cmd = malloc(sizeof(char) * (dir_len + cmd_len + 2));
-				if (new_cmd == NULL)
-				{
-					printf("error in memory allocation");
-					exit(EXIT_FAILURE);
-				}
-			}
-			else
-			{
-				new_cmd = realloc(new_cmd, (dir_len + cmd_len + 2));
-				if (new_cmd == NULL)
-				{
-					printf("error in memory allocation");
-					exit(EXIT_FAILURE);
-				}
-			}
-			strcpy(new_cmd, path);
-			strcat(new_cmd, "/");
-
-			strcat(new_cmd, cmd);
-			strcat(new_cmd, "\0");
-			/*strcpy(arr, new_cmd);*/
-			if (stat(new_cmd, &st) == 0)
-			{
-				/*printf("%s", arr);*/
-				return (new_cmd);
-			}
-			else
-			{
-				path = strtok(NULL, ":");
-				free(new_cmd);
-			}
-		}	
+			free(temp);
+			free(copy);
+			return (0);
+		}
+		else
+		{
+			path = strtok(NULL, ":");
+		}
 	}
-	return (NULL);
+	free(temp);
+	free(copy);
+	return (1);
 }
