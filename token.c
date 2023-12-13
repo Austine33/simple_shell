@@ -34,7 +34,7 @@ char **tokenise(char *line)
 		token[j] = tok;
 		j += 1;
 		tok = strtok(NULL, " \n");
-	}	
+	}
 	token[i] = NULL;
 	return (token);
 }

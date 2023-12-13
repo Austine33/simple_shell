@@ -8,9 +8,10 @@
 #include <string.h>
 #include <ctype.h>
 #include <sys/stat.h>
+int dir(char **dir);
+extern char **environ;
 char *getcmd(void);
 int execute_args(char **tokens);
 char **tokenise(char *line);
-char **path(char **tokenised);
 int cmd_exists(char **arr);
 #endif

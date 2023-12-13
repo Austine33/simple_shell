@@ -1,7 +1,7 @@
 /**
- * readfunc - function to read
+ * getcmd - function to read the cli
  *
- * return: a string  of the command
+ * Return: the array of the string
  */
 #include "main.h"
 char *getcmd(void)
