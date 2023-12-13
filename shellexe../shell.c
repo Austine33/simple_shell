@@ -18,15 +18,9 @@ int main(void)
 		printf("($) ");
 		input_string = getcmd();
 		tokenised = tokenise(input_string);
-		cmd = malloc(200 * sizeof(char));
-		if (cmd == NULL)
-		{
-			printf("error in allocating memory");
-			exit(EXIT_FAILURE);
-		}
-		strcpy(cmd, tokenised[0]);
+		cmd = strdup(tokenised[0]);
 		tokenised[0] = cmd;
-		/*command = path(tokenised);*/:wq
+		/*command = path(tokenised);*/
 		found = cmd_exists(&cmd);
 		printf(".................1%s1........\n", tokenised[0]);
 		if (found == 0)
