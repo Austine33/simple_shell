@@ -1,6 +1,6 @@
 /**
  * main - runs my shell
- * 
+ *
  * Return: Always 0 on success or 1 on error
  */
 #include "main.h"
@@ -10,9 +10,8 @@ int main(void)
 	char *input_string;
 	char **tokenised;
 	char *cmd;
-	
-	/*char **command;*/
 	int found = 0;
+
 	while (loop)
 	{
 		printf("($) ");

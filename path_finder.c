@@ -1,16 +1,17 @@
 #include "main.h"
+/**
+ * cmd_exists - checks if a command exists
+ * @arr: the command to check
+ * Return: 0 on success
+ */
 int cmd_exists(char **arr)
 {
 	struct stat st;
 	char *paths = getenv("PATH");
-	char *copy, *path, *array; 
+	char *copy, *path, *array;
 	char *temp = strdup(*arr);
 	int dir = 0, cmd = 0;
 
-	if (stat(*arr, &st) == 0)
-	{
-		return (0);
-	}
 	copy = strdup(paths);
 	if (copy == NULL)
 	{
