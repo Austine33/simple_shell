@@ -1,30 +1,18 @@
-
 #include "main.h"
 /**
  * execute_args - executes the command
- * 
- * tokens: an array of stings
- *
+ * @tokens: an array of stings
  * Return: 0 on success
  */
-extern char **environ;
-
 int execute_args(char **tokens)
 {
 	pid_t child;
 	int stat;
-	int i = 0;
 
-	while (tokens[i] != NULL)
-	{
-		printf(".%s.\n", tokens[i]);
-		i += 1;
-		sleep(3);
-	}
 	child = fork();
 	if (child == -1)
 	{
-		perror("error in creating process");
+		perror("error in creating process\n");
 		exit(EXIT_FAILURE);
 		return (1);
 	}
@@ -32,9 +20,8 @@ int execute_args(char **tokens)
 	{
 		if (execve(tokens[0], tokens, environ) == -1)
 		{
-			perror("error in execution");
+			perror("error in execution\n");
 			exit(EXIT_FAILURE);
-			return (1);
 		}
 	}
 	else
