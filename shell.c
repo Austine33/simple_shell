@@ -22,7 +22,6 @@ int main(void)
 		tokenised[0] = cmd;
 		/*command = path(tokenised);*/
 		found = cmd_exists(&cmd);
-		printf(".................1%s1........\n", tokenised[0]);
 		if (found == 0)
 		{
 			execute_args(tokenised);
@@ -30,7 +29,7 @@ int main(void)
 		}
 		else
 		{
-			printf("command not found");
+			printf("command not found\n");
 			free(cmd);
 			sleep(1);
 		}
