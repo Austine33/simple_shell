@@ -1,3 +1,4 @@
+
 /**
  * getcmd - function to read the cli
  *
