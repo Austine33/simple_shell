@@ -10,6 +10,8 @@
 #include <sys/stat.h>
 int dir(char **dir);
 extern char **environ;
+int shell(void);
+int noshell(void);
 char *getcmd(void);
 int execute_args(char **tokens);
 char **tokenise(char *line);
