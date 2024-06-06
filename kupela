@@ -1,0 +1,14 @@
+saka you do is you clone the repo iri https://github.com/Lordwill1/simple_shell somewhere musiri murepo rangu
+inside the repo ralodwill
+cp *.c path_to_repo_rangu
+cp *.h path to repo rangu
+then you copy all .c files 
+then you copy all .h files
+to complile the code use 
+	gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+to run the code unoshandisa ./hsh
+
+saka copied code iyi inofanha kuva ichishanda now chasara kucopa zvine skiri usingauraye functionality
+key note ndeyekuti code iri interdependant if there is a way yekuita change mafunction names pese paakashandisiswa to maintain functionality
+
+unoita plan
