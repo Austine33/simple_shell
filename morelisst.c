@@ -28,13 +28,13 @@ char **list_to_string(list_t *head)
 {
 	list_t *node = head;
 	size_t i = lenlist(head), j;
-	char **strs;
+	char **strings;
 	char *str;
 
 	if (!head || !i)
 		return (NULL);
-	strs = malloc(sizeof(char *) * (i + 1));
-	if (!strs)
+	strings = malloc(sizeof(char *) * (i + 1));
+	if (!strings)
 		return (NULL);
 	for (i = 0; node; node = node->next, i++)
 	{
@@ -42,16 +42,16 @@ char **list_to_string(list_t *head)
 		if (!str)
 		{
 			for (j = 0; j < i; j++)
-				free(strs[j]);
-			free(strs);
+				free(strings[j]);
+			free(strings);
 			return (NULL);
 		}
 
 		str = stringcopy(str, node->str);
-		strs[i] = str;
+		strings[i] = str;
 	}
-	strs[i] = NULL;
-	return (strs);
+	strings[i] = NULL;
+	return (strings);
 }
 
 
